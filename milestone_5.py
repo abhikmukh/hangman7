@@ -79,9 +79,12 @@ def play_game(word_list: List) -> None:
             print("Congratulations. You won the game!")
 
 
-# list of words with all same words to check how the program copes with same letters
-# list_of_words = ["banana", "banana", "banana", "banana", "banana"]
-play_game(["apple", "banana", "orange", "pears", "mango"])
+if __name__ == '__main__':
+
+    # list of words with all same words to check how the program copes with same letters
+    # list_of_words = ["banana", "banana", "banana", "banana", "banana"]
+    list_of_words = ["apple", "banana", "orange", "pears", "mango"]
+    play_game(list_of_words)
 
 
 
