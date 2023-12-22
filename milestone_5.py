@@ -31,9 +31,9 @@ class Hangman:
         """
         if guess.lower() in self.word:
             print(f"Good guess! {guess} is in the word.")
-            for i, letter in enumerate(self.word):
+            for index, letter in enumerate(self.word):
                 if letter == guess:
-                    self.word_guessed[i] = letter
+                    self.word_guessed[index] = letter
             self.num_letters -= 1
         else:
             self.num_lives -= 1
@@ -54,6 +54,7 @@ class Hangman:
             else:
                 self._check_guess(guess)
                 self.list_of_guesses.append(guess)
+                break
 
 
 def play_game(word_list: List) -> None:
@@ -66,30 +67,21 @@ def play_game(word_list: List) -> None:
         None
 
     """
-    num_lives = 5
-    game = Hangman(word_list, num_lives)
+    game = Hangman(word_list, num_lives=5)
     while True:
-        if num_lives == 0:
+        if game.num_lives == 0:
             print("You Lost!")
+            break
 
         elif game.num_letters > 0:
             game.ask_for_input()
 
-        elif num_lives != 0 and game.num_letters <= 0:
+        elif game.num_lives != 0 and game.num_letters <= 0:
             print("Congratulations. You won the game!")
+            break
 
 
 if __name__ == '__main__':
 
-    # list of words with all same words to check how the program copes with same letters
-    # list_of_words = ["banana", "banana", "banana", "banana", "banana"]
     list_of_words = ["apple", "banana", "orange", "pears", "mango"]
     play_game(list_of_words)
-
-
-
-
-
-
-
-
